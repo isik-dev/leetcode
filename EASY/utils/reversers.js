@@ -61,8 +61,8 @@ const arrayReverser3 = (arr) => {
 // acc = [3, 2, 1]; currentVal = 4 // => [4, 3, 2, 1]
 // acc = [4, 3, 2, 1]
 
-const testArr = [1, 2, 3, 4];
-console.time('reverse');
-console.log(arrayReverser3(testArr));
-console.timeEnd('reverse');
-console.log('after the func', testArr);
+// const testArr = [1, 2, 3, 4];
+// console.time('reverse');
+// console.log(arrayReverser3(testArr));
+// console.timeEnd('reverse');
+// console.log('after the func', testArr);
