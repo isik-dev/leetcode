@@ -9,4 +9,4 @@ function hammingWeight(n: number): number {
   return res;
 }
 
-console.log(hammingWeight(1401100000000));
+// console.log(hammingWeight(1401100000000));
