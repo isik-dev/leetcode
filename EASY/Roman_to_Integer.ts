@@ -10,10 +10,18 @@
 // * ----------------------------------------------------------------------> Solution <---------------------------------------------------------------------- * //
 
 // brute force solution:
-const romanToIntegerBruteForce = (x) => {
-  const chars = { I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000 };
+const romanToIntegerBruteForce = (x: string): number => {
+  const chars: Record<string, number> = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
   const newArr = x.split('');
-  let res = 0;
+  let res: number = 0;
   for (let i = newArr.length - 1; i >= 0; i--) {
     if (chars[newArr[i]] > res || chars[newArr[i]] === chars[newArr[i + 1]]) {
       res += chars[newArr[i]];
@@ -27,9 +35,9 @@ const romanToIntegerBruteForce = (x) => {
 // console.log(romanToIntegerBruteForce('CXLIV'));
 
 // faster and less memory usage
-const superSonicSpeed = (s) => {
-  let ans = 0;
-  let num = 0;
+const superSonicSpeed = (s: string): number => {
+  let ans: number = 0;
+  let num: number = 0;
   for (let i = s.length - 1; i >= 0; i--) {
     switch (s.charAt(i)) {
       case 'I':

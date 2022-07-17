@@ -9,7 +9,7 @@
 // ------------------------------------------------> assuming the input the input is a string <----------------------------------------------------------------
 // BRUTE FORCE:
 //this approach does not work as in JavaScript objects and arrays are compared by reference and not by value.
-const reverseAndCompareArray = (x) => {
+const reverseAndCompareArray = (x: string) => {
   const original = x.split('');
   const reversed = x.split('').reverse();
 
@@ -21,7 +21,7 @@ const reverseAndCompareArray = (x) => {
 
 // console.log('reverse and compare an array', reverseAndCompareArray('bob'));
 
-const reverseAndCompareArrayValues = (x) => {
+const reverseAndCompareArrayValues = (x: string) => {
   const original = x.split('');
   const reversed = x.split('').reverse();
   for (let i = 0; i <= original.length; i++) {
@@ -39,7 +39,7 @@ const reverseAndCompareArrayValues = (x) => {
 // );
 
 // ------------------------------------------------> without turning integer into string <----------------------------------------------------------------
-const palindromeNumber = (x) => {
+const palindromeNumber = (x: number) => {
   let input = x;
   let reversed = 0;
   while (input > 0) {
@@ -55,7 +55,7 @@ const palindromeNumber = (x) => {
 // console.log(palindromeNumber(121));
 
 // a much smarter way would be reverting only the half of a given integer. Because if it is palindrome the other half should always be exactly the same
-const superSonicSpeed = (x) => {
+const palindromeFaster = (x: number) => {
   // before running our algorithm let's check for edge cases:
   if (x < 0 || (x % 10 === 0 && x !== 0)) {
     return false;
@@ -69,4 +69,4 @@ const superSonicSpeed = (x) => {
   return x === reversed || x === Math.floor(reversed / 10);
 };
 
-console.log(superSonicSpeed(120));
+console.log(palindromeFaster(121));

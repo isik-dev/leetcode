@@ -5,7 +5,7 @@
 // You can return the answer in any order.
 
 // brute force solution
-function twoSums(nums, target) {
+function twoSums(nums: Array<number>, target: number) {
   for (let i = 0; i < nums.length; i++) {
     console.log('this is i being looped', i);
     for (let j = 0; j < nums.length; j++) {
@@ -23,7 +23,7 @@ function twoSums(nums, target) {
 // console.log(twoSums([6, 14, 3, 21, 19], 40));
 
 // using Set object
-function twoSumsWithSet(nums, target) {
+function twoSumsWithSet(nums: Array<number>, target: number) {
   const mySet = new Set(nums);
   for (let i = 0; i < nums.length; i++) {
     let latter = target - nums[i];
