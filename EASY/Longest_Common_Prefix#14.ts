@@ -27,11 +27,19 @@
 // 1 thing to do, would be picking the longest word and looping to drop off letters which either of the given words do not have
 // flflorlower
 
-const searchCommonPrefix = (input: Array<string>): string => {
-  let shortestWord: string;
-  input.forEach((word) => {
-    if (word.length > shortestWord.length) {
+const searchCommonPrefix = (allWords: Array<string>): string => {
+  let prefix = ''
+  const longestWord = allWords.reduce((a, b) => {
+    return a.length >= b.length ? a : b
+  })
+  for (let n = 0; n <= allWords.length - 1; n++) {
+    for (let i = 0; i <= longestWord.length - 1; i++) {
+      if (allWords[n].indexOf(longestWord[i]) !== -1) {
+        prefix.concat(longestWord[i])
+      }
     }
-  });
-  return 's';
+  }
+  return prefix;
 };
+
+console.log(searchCommonPrefix(['one', 'two', 'ginormous', 'throe']))
