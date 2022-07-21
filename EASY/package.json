@@ -1,19 +1,8 @@
 {
-    "name": "sort",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-      "start:build": "tsc -w",
-      "start:run": "nodemon build/index.js",
-      "start": "concurrently npm:start:*"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "dependencies": {
-      "concurrently": "^7.1.0",
-      "nodemon": "^2.0.15"
-    }
+  "devDependencies": {
+    "@types/node": "^18.0.6",
+    "ts-node": "^10.9.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
   }
-  
+}
