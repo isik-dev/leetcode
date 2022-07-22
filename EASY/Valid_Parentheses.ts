@@ -9,35 +9,53 @@
 
 // 1. Brute Force
 
-enum STypes {
-  BO = "(",
-  BC = ")",
-  SO = "[",
-  SC = "]",
-  CO = "{",
-  CC = "}"
+const OpenTypes = {
+  BO: "(",
+  SO: "[",
+  CO: "{",
 }
+
+const CloseTypes = {
+  BC: ")",
+  SC: "]",
+  CC: "}"
+}
+
+const openList = ['(', '{', '['];
+const closeList = [')', '}', ']'];
 
 const isValid = (s: string): boolean => {
   const input = s.split("");
   let output: boolean = false;
+
+
+  let open: Array<string> = [];
+  let close: Array<string> = [];
+
+
   for (let i = 0; i <= input.length - 1; i++) {
-    if (input[i + 1]) {
-      if (input[i] === STypes.BO && input[i + 1] === STypes.BC) {
-        output = true;
-      } else if (input[i] === STypes.SO && input[i + 1] === STypes.SC) {
-        output = true;
-      } else if (input[i] === STypes.CO && input[i + 1] === STypes.CC) {
-        output = true;
+    if (openList.includes(input[i])) {
+      open.push(input[i])
+    } else {
+      close.unshift(input[i])
+    }
+
+    let iterator = 0
+    while (iterator <= open.length - 1) {
+      if (open[iterator] === close[iterator]) {
+        output = true
       } else {
         output = false
       }
+      iterator++
     }
   }
+  console.log('openList', open)
+  console.log('closeList', close)
   return output;
 };
 
-console.log(isValid("()["));
+console.log(isValid("()[]"));
 
 // FIXME: the algorithm does not work for cases as "{[]}"
 // TODO: I can probably consider dividing the cases into two collections: openBrackets && closeBrackets
