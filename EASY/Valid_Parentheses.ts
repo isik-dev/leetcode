@@ -55,8 +55,43 @@ const isValid = (s: string): boolean => {
   return output;
 };
 
-console.log(isValid("()[]"));
+// console.log(isValid("()[]"));
 
 // FIXME: the algorithm does not work for cases as "{[]}"
 // TODO: I can probably consider dividing the cases into two collections: openBrackets && closeBrackets
 //       loop and push each value to its corresponding collection and compare those two collections at the end
+
+class Stack {
+  items: Array<number>
+  count: number
+  constructor() {
+    this.items = []
+    this.count = 0
+  }
+
+  // Add element on top of stack
+  push(element: number) {
+    this.items[this.count] = element
+    console.log(`${element} added to ${this.count}`)
+    this.count += 1
+    return this.count - 1
+  }
+
+  // Remove and return the top element
+  pop() {
+    if (this.count === 0) return undefined
+    let deleteItem = this.items[this.count - 1]
+    this.count -= 1
+    console.log(`${deleteItem} has been removed`)
+    return deleteItem;
+  }
+}
+
+
+const stack = new Stack();
+stack.push(100);
+stack.push(200);
+stack.push(300);
+stack.pop();
+stack.pop();
+console.log(`Current items: `, stack.items)
