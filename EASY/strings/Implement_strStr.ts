@@ -19,7 +19,7 @@ const needle = 'yor';
 
 // console.log(haystack.includes(needle)) -> return true
 
-// console.log(haystack.indexOf(needle)); -> returns 2 (indexOf method return the index of the first occurence of the given substring inside a string);
+// console.log(haystack.indexOf(needle)); -> returns 2 (indexOf method returns the index of the first occurence of the given substring inside a string);
 
 
 
@@ -31,28 +31,31 @@ function strStr(haystack: string, needle: string): number {
 }
 
 // 2. Naive Algorithm for Pattern Searching
-function naiveApproach(text: string, pattern: string): number {
-    if (!pattern.length) return 0;
-    
-    let txtLength = text.length;
-    let patLength = pattern.length;
-    let output = -1;
-    
-    for (let i = 0; i <= txtLength - patLength + 1; i++) {
-        if (text[i] === pattern[0]) {
-            for (let k = 0; k < patLength; k++) {
-                if (text[i + k] !== pattern[k]) {
-                    console.log('last to be recorded', k)
+function naiveApproach(haystack: string, needle: string): number {
+    if (!needle.length) return 0;
+    if (needle.length > haystack.length) return -1;
+    let output = -1
+    let possibleMatch = '';
+
+    // loop through the haystack and find the first matching letter with needle
+    for (let i = 0; i <= haystack.length - needle.length; i++) {
+        if (haystack[i] === needle[0] && possibleMatch !== needle) {
+        // once we find the first case we enter into our second loop
+            // in our second loop, we check if the subsequent letters match as well
+            output = i;
+            for (let k = 0; k < needle.length; k++) {
+                if (haystack[i + k] !== needle[k]) {
+                    possibleMatch = ''
                     break;
                 }
-                output = i
+                possibleMatch += needle[k];
             }
         }
     }
-    return output;
+    return possibleMatch === needle ? output : -1;
 }
 
-console.log(naiveApproach("mississippi", "issip"))
+console.log(naiveApproach("mississippi", "issippi"))
 
 
 // 2. Solving for the space & time complexity.
