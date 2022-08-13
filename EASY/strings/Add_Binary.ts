@@ -30,6 +30,7 @@
 
 // 1
 
+// ATTEMPT 1
 function addBinary(a: string, b: string): string {
   const longestBinary = a.length >= b.length ? a.split('') : b.split('');
   let shortestBinary = a.length <= b.length ? a.split('') : b.split('');
@@ -65,4 +66,44 @@ function addBinary(a: string, b: string): string {
   return output.join('');
 }
 
-console.log(addBinary('10', '1'));
+// console.log(addBinary('10', '1'));
+
+// ATTEMP 2
+function matchStrAndAddBinary(a: string, b: string): string {
+  const diff = Math.abs(a.length - b.length);
+  const longest = a.length >= b.length ? a.split('') : b.split('');
+  let shortest = a.length < b.length ? a.split('') : b.split('');
+
+  if (longest.length !== shortest.length) {
+    for (let i = 0; i < diff; i++) {
+      shortest = ['0', ...shortest];
+    }
+  }
+
+  let binOutput: Array<string> = [];
+  let carry = 0;
+
+  for (let i = longest.length - 1; i >= 0; i--) {
+    let sum: number = carry + Number(longest[i]) + Number(shortest[i]);
+    if (sum === 3) {
+      carry = 1;
+      binOutput = ['1', ...binOutput];
+    } else if (sum === 2) {
+      carry = 1;
+      binOutput = ['0', ...binOutput];
+    } else {
+      carry = 0;
+      binOutput = [String(sum), ...binOutput];
+    }
+  }
+
+  if (carry > 0) {
+    binOutput = ['1', ...binOutput];
+  }
+
+  return binOutput.join('');
+}
+
+console.log(matchStrAndAddBinary('1011', '11'));
+console.log(matchStrAndAddBinary('1', '11'));
+console.log(matchStrAndAddBinary('1010', '1011'));
