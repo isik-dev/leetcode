@@ -34,11 +34,19 @@ console.log(isPalindrome('ab_a'));
 
 // -------------------------------- Faster Solution With Pointers -------------------------------- //
 
-// function superSonicPalindromeChecker(s: string) {
-//   let pointer = 0;
-//   let pointer2 = s.length - 1;
+function superSonicPalindromeChecker(s: string) {
+  let pointer = 0;
+  let pointer2 = s.length - 1;
 
-//   while (pointer < pointer2) {
-//     if ()
-//   }
-// }
+  while (pointer < pointer2) {
+    console.log('process inside the loop');
+    if (s[pointer] === 'o') {
+      console.log('if statement', pointer);
+      pointer++
+      continue;
+    }
+    return false;
+  }
+}
+
+superSonicPalindromeChecker('some')
